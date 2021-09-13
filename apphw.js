@@ -14,7 +14,8 @@ const write = (message)=> {
 }
 //Array write function
 const writeList = ()=> {
-    write (ranList);
+    write ("List: " +  ranList);
+    write("---------");
 }
 
 //if/then/else loop
@@ -29,8 +30,6 @@ const loop = ()=> {
         }
     }
 }
-
-//array randomize
 const randomize = () => {
     for (let i = 0; i < list.length; i++) {
        let x = ranList[Math.floor(Math.random() * list.length )];
@@ -38,19 +37,17 @@ const randomize = () => {
     }
 }
 
-//reset random list to avoid same variable repeat after multiple randomizing
 const reset = () => {
     list = ["dog", "fish", "cat", "shark", "cat", "dog"];
     ranList = list;
 }
-
 //initial functions
 writeList();
 loop();
-
 //random & recall
 document.body.querySelector(".button").addEventListener("click",function(){
     randomize();
+    write("----------");
     writeList();
     loop();
     reset();
