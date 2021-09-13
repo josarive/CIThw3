@@ -1,11 +1,9 @@
 //Supplied array
 let list = ["dog", "fish", "cat", "shark", "cat", "dog"];
-let ranList = [];
-let x;
+let ranList = list;
 
 
 //set variable to current array
-//let ranList=list
 
 //write function
 const write = (message)=> {
@@ -32,16 +30,28 @@ const loop = ()=> {
     }
 }
 
+//array randomize
 const randomize = () => {
-    gen();
-    ranList[i] = x;
-
+    for (let i = 0; i < list.length; i++) {
+       let x = ranList[Math.floor(Math.random() * list.length )];
+        ranList[i]=x;
+    }
 }
 
-const gen = () => {
-    x = Math.floor(Math.random() * list.length);
+//reset random list to avoid same variable repeat after multiple randomizing
+const reset = () => {
+    list = ["dog", "fish", "cat", "shark", "cat", "dog"];
+    ranList = list;
 }
-input();
+
+//initial functions
 writeList();
+loop();
+
 //random & recall
-// document.body.querySelector(".button").addEventListener("click",randomize());
+document.body.querySelector(".button").addEventListener("click",function(){
+    randomize();
+    writeList();
+    loop();
+    reset();
+});
